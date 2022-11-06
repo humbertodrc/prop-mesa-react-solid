@@ -12,6 +12,37 @@ function App() {
 		personajesPorDefecto || []
 	);
 	const [elementos, setElementos] = useState(elementosData || {});
+	const [personaje, setPersonaje] = useState({
+		nombre: '',
+		avatar: '',
+		elemento: '',
+	})
+
+	const { nombre, avatar, elemento } = personaje;
+	
+	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setPersonaje({
+			...personaje,
+			[e.target.name]: e.target.value,
+		});
+	}
+
+	const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setPersonaje({
+			...personaje,
+			[e.target.name]: e.target.value,
+		});
+	}
+
+	const addPersonaje = () => {
+		setPersonajesInicial([...personajesInicial, personaje]);
+		setPersonaje({
+			nombre: '',
+			avatar: '',
+			elemento: '',
+		});
+	}
+	
 
 	return (
 		<div className='App'>
@@ -107,14 +138,20 @@ function App() {
 									aria-label='nombreSuperheroe'
 									aria-describedby='basic-nombre'
 									id='nombre-personaje'
+									value={nombre}
+									name='nombre'
+									onChange={handleChangeInput}
 								/>
 							</div>
 							<div className='input-group mb-3'>
-								<span className='input-group-text'>Nombre</span>
+								<span className='input-group-text'>Elemnto</span>
 								<select
 									className='form-select'
 									aria-label='select-elemento'
 									id='elemento-personaje'
+									value={elemento}
+									name='elemento'
+									onChange={handleChangeSelect}
 								>
 									<option value={""}>Seleccionar...</option>
 									<option value='Agua'>
@@ -135,6 +172,9 @@ function App() {
 									aria-label='avatar'
 									aria-describedby='basic-avatar'
 									id='avatar-personaje'
+									value={avatar}
+									name='avatar'
+									onChange={handleChangeInput}
 								/>
 							</div>
 						</div>
@@ -151,6 +191,7 @@ function App() {
 								className='btn btn-primary'
 								data-bs-toggle='modal'
 								id='crear-personaje'
+								onClick={addPersonaje}
 							>
 								Crear Superhéroe
 							</button>
