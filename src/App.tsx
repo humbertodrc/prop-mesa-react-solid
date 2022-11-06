@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import './App.css';
+import { Card } from './components/Card';
+import {
+	personajesPorDefecto,
+	elementos as elementosData,
+	Personaje,
+} from './data';
 
 function App() {
+	const [personajesInicial, setPersonajesInicial] = useState<Personaje[]>(
+		personajesPorDefecto || []
+	);
+	const [elementos, setElementos] = useState(elementosData || {});
+
 	return (
 		<div className='App'>
+			{/* Crear superHero */}
 			<header className='py-5 text-center container'>
 				<div className='row py-lg-5'>
 					<div className='col-lg-6 col-md-8 mx-auto'>
@@ -21,16 +34,49 @@ function App() {
 					</div>
 				</div>
 			</header>
+			{/* Lista Personajes */}
 			<main>
 				<div className='album py-5'>
 					<div className='container'>
 						<div
 							className='row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3'
 							id='card-container'
-						></div>
+						>
+							{/* <Card /> */}
+							{personajesInicial.map(personaje =>
+								personaje.elemento === elementos.agua.nombre ? (
+									<Card
+										key={personaje.nombre}
+										personaje={personaje}
+										elemento={elementos.agua}
+									/>
+								) : personaje.elemento === elementos.fuego.nombre ? (
+									<Card
+										key={personaje.nombre}
+										personaje={personaje}
+										elemento={elementos.fuego}
+									/>
+								) : personaje.elemento === elementos.tierra.nombre ? (
+									<Card
+										key={personaje.nombre}
+										personaje={personaje}
+										elemento={elementos.tierra}
+									/>
+								) : (
+									personaje.elemento === elementos.aire.nombre && (
+										<Card
+											key={personaje.nombre}
+											personaje={personaje}
+											elemento={elementos.aire}
+										/>
+									)
+								)
+							)}
+						</div>
 					</div>
 				</div>
 			</main>
+			{/* Modal */}
 			<div
 				className='modal fade'
 				id='inputModal'
@@ -70,7 +116,8 @@ function App() {
 									aria-label='select-elemento'
 									id='elemento-personaje'
 								>
-									<option value='Agua' selected>
+									<option value={""}>Seleccionar...</option>
+									<option value='Agua'>
 										Agua
 									</option>
 									<option value='Aire'>Aire</option>

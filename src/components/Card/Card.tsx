@@ -1,29 +1,37 @@
 import React from 'react';
-export interface Card {}
+import { Personaje, ElementoDetail } from '../../data/personajes';
+export interface Card {
+	personaje: Personaje;
+	elemento: ElementoDetail;
+}
 
-const Card: React.FC<Card> = () => {
+const Card: React.FC<Card> = ({ personaje, elemento }) => {
 	return (
-		<div>
+		<div className='col'>
 			<div className='card shadow-sm'>
 				<div className='card-header'>
-					<img src='' alt='' className='bd-placeholder-img card-img-top' />
-					<img src='' alt='' className='logo-elemento' />
+					<img
+						src={personaje.avatar}
+						alt={personaje.nombre}
+						className='bd-placeholder-img card-img-top'
+					/>
+					<img src={elemento.logo} alt={elemento.nombre} className='logo-elemento' />
 				</div>
 				<div className='card-body'>
-					<h5 className='card-title'></h5>
-					<small className='text-muted'></small>
+					<h5 className='card-title'>{personaje.nombre}</h5>
+					<small className='text-muted'>{elemento.nombre}</small>
 					<ul>
 						<li>
-							<i>Fuerza:</i> <span></span>
+							<i>Fuerza:</i> <span>{elemento.fuerza}</span>
 						</li>
 						<li>
-							<i>Vida:</i> <span></span>
+							<i>Vida:</i> <span>{elemento.vida}</span>
 						</li>
 						<li>
-							<i>Defensa:</i> <span></span>
+							<i>Defensa:</i> <span>{elemento.defensa}</span>
 						</li>
 						<li>
-							<i>Velocidad:</i> <span></span>
+							<i>Velocidad:</i> <span>{elemento.velocidad}</span>
 						</li>
 					</ul>
 					<div className='d-flex justify-content-between align-items-center'></div>

@@ -1,4 +1,4 @@
-export interface Personajes {
+export interface Personaje {
 	nombre: string,
 	elemento: string,
 	avatar: string,
@@ -24,7 +24,7 @@ export interface ElementoDetail {
 export const elementos: Elementos = {
 	agua: {
 		nombre: 'Agua',
-		logo: './assets/agua.png',
+		logo: './assets/images/agua.png',
 		debilidad: 'Tierra',
 		fuerza: 30,
 		vida: 100,
@@ -33,7 +33,7 @@ export const elementos: Elementos = {
 	},
 	fuego: {
 		nombre: 'Fuego',
-		logo: './assets/fuego.png',
+		logo: './assets/images/agua.png',
 		debilidad: 'Agua',
 		fuerza: 50,
 		vida: 90,
@@ -42,7 +42,7 @@ export const elementos: Elementos = {
 	},
 	tierra: {
 		nombre: 'Tierra',
-		logo: './assets/tierra.png',
+		logo: './assets/images/agua.png',
 		debilidad: 'Aire',
 		fuerza: 40,
 		vida: 80,
@@ -51,7 +51,7 @@ export const elementos: Elementos = {
 	},
 	aire: {
 		nombre: 'Aire',
-		logo: './assets/aire.png',
+		logo: './assets/images/agua.png',
 		debilidad: 'Fuego',
 		fuerza: 30,
 		vida: 80,
@@ -60,7 +60,7 @@ export const elementos: Elementos = {
 	},
 };
 
-export const personajesPorDefecto: Personajes[]  = [
+export const personajesPorDefecto: Personaje[]  = [
 	{
 		nombre: 'Aquagirl',
 		elemento: 'Agua',
@@ -81,7 +81,7 @@ export const personajesPorDefecto: Personajes[]  = [
 	},
 	{
 		nombre: 'Earthquake',
-		elemento: 'TIerra',
+		elemento: 'Tierra',
 		avatar:
 			'https://i.pinimg.com/564x/2b/ac/3a/2bac3a5eb353e08e25a609993798a774.jpg',
 	},
