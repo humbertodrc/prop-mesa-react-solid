@@ -15,7 +15,11 @@ const Card: React.FC<Card> = ({ personaje, elemento }) => {
 						alt={personaje.nombre}
 						className='bd-placeholder-img card-img-top'
 					/>
-					<img src={elemento.logo} alt={elemento.nombre} className='logo-elemento' />
+					<img
+						src={elemento.logo}
+						alt={elemento.nombre}
+						className='logo-elemento'
+					/>
 				</div>
 				<div className='card-body'>
 					<h5 className='card-title'>{personaje.nombre}</h5>

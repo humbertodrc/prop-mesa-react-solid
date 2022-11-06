@@ -24,7 +24,7 @@ export interface ElementoDetail {
 export const elementos: Elementos = {
 	agua: {
 		nombre: 'Agua',
-		logo: './assets/images/agua.png',
+		logo: '/src/assets/images/agua.png',
 		debilidad: 'Tierra',
 		fuerza: 30,
 		vida: 100,
@@ -33,7 +33,7 @@ export const elementos: Elementos = {
 	},
 	fuego: {
 		nombre: 'Fuego',
-		logo: './assets/images/agua.png',
+		logo: '/src/assets/images/fuego.png',
 		debilidad: 'Agua',
 		fuerza: 50,
 		vida: 90,
@@ -42,7 +42,7 @@ export const elementos: Elementos = {
 	},
 	tierra: {
 		nombre: 'Tierra',
-		logo: './assets/images/agua.png',
+		logo: '/src/assets/images/tierra.png',
 		debilidad: 'Aire',
 		fuerza: 40,
 		vida: 80,
@@ -51,7 +51,7 @@ export const elementos: Elementos = {
 	},
 	aire: {
 		nombre: 'Aire',
-		logo: './assets/images/agua.png',
+		logo: '/src/assets/images/aire.png',
 		debilidad: 'Fuego',
 		fuerza: 30,
 		vida: 80,
