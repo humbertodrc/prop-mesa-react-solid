@@ -16,23 +16,23 @@ function App() {
 		nombre: '',
 		avatar: '',
 		elemento: '',
-	})
+	});
 
 	const { nombre, avatar, elemento } = personaje;
-	
+
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPersonaje({
 			...personaje,
 			[e.target.name]: e.target.value,
 		});
-	}
+	};
 
 	const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setPersonaje({
 			...personaje,
 			[e.target.name]: e.target.value,
 		});
-	}
+	};
 
 	const addPersonaje = () => {
 		setPersonajesInicial([...personajesInicial, personaje]);
@@ -41,8 +41,20 @@ function App() {
 			avatar: '',
 			elemento: '',
 		});
-	}
-	
+	};
+
+	const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0];
+		const reader = new FileReader();
+		reader.readAsDataURL(file as Blob);
+
+		reader.onloadend = () => {
+			setPersonaje({
+				...personaje,
+				avatar: reader.result as string,
+			});
+		};
+	};
 
 	return (
 		<div className='App'>
@@ -153,28 +165,24 @@ function App() {
 									name='elemento'
 									onChange={handleChangeSelect}
 								>
-									<option value={""}>Seleccionar...</option>
-									<option value='Agua'>
-										Agua
-									</option>
+									<option value={''}>Seleccionar...</option>
+									<option value='Agua'>Agua</option>
 									<option value='Aire'>Aire</option>
 									<option value='Fuego'>Fuego</option>
 									<option value='Tierra'>Tierra</option>
 								</select>
 							</div>
 							<div className='input-group mb-3'>
-								<span className='input-group-text' id='basic-avatar'>
-									Avatar
-								</span>
 								<input
-									type='text'
+									// type='text'
+									type='file'
 									className='form-control'
 									aria-label='avatar'
 									aria-describedby='basic-avatar'
 									id='avatar-personaje'
-									value={avatar}
+									// value={avatar}
 									name='avatar'
-									onChange={handleChangeInput}
+									onChange={handleImage}
 								/>
 							</div>
 						</div>
